@@ -1,0 +1,112 @@
+Wh@tAPI version 0.1
+So far what it does:
+1. manage users
+2. create posts and topics
+3. manage notifications
+
+
+first endpoint is : '/'
+This method is the landing. Shows the api version, title, etc. Not necessary
+but I just thought I should put it instead of a blank page
+{
+  "API details": [
+    {
+      "title": "Wh@teva API"
+    }, 
+    {
+      "version": "0.1"
+    }, 
+    {
+      "credits": "x3l0r"
+    }
+  ]
+}
+
+
+
+
+second one is: '/users'
+returns users in the format:
+	{
+	  "users": [
+		{
+		  "activationCode": "", 
+		  "avatar": "Noximillien.jpeg", 
+		  "email": "nx@x.com", 
+		  "username": "x3l0r7"
+		}, 
+		{
+		  "activationCode": "", 
+		  "avatar": "", 
+		  "email": "z@z.com", 
+		  "username": "zeref07"
+		}, 
+		{
+		  "activationCode": "", 
+		  "avatar": "", 
+		  "email": "aizen@zol.com", 
+		  "username": "aizen95"
+		}, 
+		{
+		  "activationCode": "", 
+		  "avatar": "", 
+		  "email": "saitama100@gmail.com", 
+		  "username": "saitama"
+		}
+	  ]
+	}
+	
+Just getting a specific user -- endpoint:  '/users/<username'
+    example : http://whateva.co.zw/api/users/zeref
+    should return :{
+        'user':{
+            'username':'zeref',
+            'email':'z@z.com',
+            'password':'SOMEENCRYPTEDPASSWORD',
+            'avatar':'awesomeness.jpg',
+            'activationCode':'SOMEACTIVATIONCODE'
+        }
+    }
+	
+ Creating the users using a POST method -- endpoint: '/users'
+    the format for the json object should be like this:
+    {
+         'email':'z@z.com',
+         'username':'Zeref07',
+         'password':'SUPERSECRETENCRYPTEDPASSWORD',
+         'avatar':'somefile.jpg',
+         'activationCode':'SOMEACTIVATIONCODE'
+    }
+
+Updating the users document via API json post<or something>
+json object should  just be the same as well:
+eg. http://whateva.co.zw/api/users/zeref   --put {'username':'zeref01','email':'zd@z.com', 'avatar':'anotherpic.png'}
+{
+	'user':{
+		'username':'zeref01',
+		'email':'zd@z.com',
+		'avatar':'anotherpic.png'
+	}
+}
+
+
+Getting topics : endpoint -- 
+'/topics' using a GET request returns a json object like the following
+{
+  "topics": [
+    {
+      "background_image": "awesomeness.jpg", 
+      "dateAdded": "Sun, 10 Sep 2017 00:00:00 GMT", 
+      "subtitle": "soccer?", 
+      "tags": [], 
+      "title": "soccer"
+    }, 
+    {
+      "background_image": "anime.png", 
+      "dateAdded": "Sun, 10 Sep 2017 00:00:00 GMT", 
+      "subtitle": "Japanese?", 
+      "tags": [], 
+      "title": "anime"
+    }
+  ]
+}
